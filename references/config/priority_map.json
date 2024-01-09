@@ -1,0 +1,11 @@
+{
+    "priority": {
+        "new": 5.0,
+        "fail": 2.0,
+        "error": 1.0,
+        "success": 0.5,
+        "masterpiece": 0.0
+    },
+
+    "base": 1.0
+}
