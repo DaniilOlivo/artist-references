@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+class IndexView(TemplateView):
+    extra_context = {"active_section": "index"}
+    template_name ='references/index.html'

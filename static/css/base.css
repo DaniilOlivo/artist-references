@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Main";
+    src: url("/static/fonts/Garamond.otf");
+}
+
+@font-face {
+    font-family: "Title";
+    src: url("/static/fonts/Mincho.ttf");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Main";
+    font-size: 18px;
+}
