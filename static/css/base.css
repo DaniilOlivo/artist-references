@@ -26,3 +26,44 @@ body {
     font-family: "Main";
     font-size: 18px;
 }
+
+.segment {
+    flex-grow: 1;
+    padding: 30px 50px;
+}
+
+.segment_gradient {
+    background: linear-gradient(154deg, #63688E 0%, #BF78AA 100%);
+}
+
+.segment_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-segment {
+    color: white;
+    text-align: center;
+    font-family: "Title";
+    letter-spacing: 3px;
+    font-size: 20px;
+}
+
+.btn-main {
+    font-size: 20px;
+    width: 280px;
+    font-family: "Title";
+    height: 70px;
+    padding: 20px 50px;
+    border: none;
+    background: url("/static/img/btn.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.btn-main:hover {
+   transform: scale(1.1, 1.1);
+   color: white;
+}

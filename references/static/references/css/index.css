@@ -1,0 +1,14 @@
+.index-page {
+    height: 100%;
+    display: flex;
+    gap: 50px;
+}
+
+.radio-block {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 30px;
+    margin-top: 40px;
+    padding-left: 20px;
+}
