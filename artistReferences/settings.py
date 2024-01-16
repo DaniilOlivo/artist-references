@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.forms.renderers import TemplatesSetting
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     'references.apps.ReferencesConfig',
     'statistic.apps.StatisticConfig',
     'login.apps.LoginConfig',
@@ -130,3 +132,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/auth/login'
+LOGIN_REDIRECT_URL = '/'
+
+class CustomFormRenderer(TemplatesSetting):
+    form_template_name = "settings/form_snippet.html"
+
+FORM_RENDERER = "artistReferences.settings.CustomFormRenderer"
