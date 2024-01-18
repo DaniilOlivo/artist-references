@@ -1,3 +1,9 @@
+.list-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .top-panel-page {
     display: flex;
     justify-content: space-between;
@@ -7,12 +13,37 @@
 .container-references {
     display: flex;
     flex-wrap: wrap;
-    gap: 55px;
-    padding: 50px 120px;
+    justify-content: center;
+    gap: 35px;
+    padding: 40px 120px;
+    position: relative;
+    flex-grow: 1;
 }
 
 .reference {
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     position: relative;
+}
+
+.paginator-btn {
+    display: block;
+    position: absolute;
+    top: calc(50% - 37px);
+
+    width: 74px;
+    height: 74px;
+
+    border-right: 18px solid #A4A4A4;
+    border-bottom: 18px solid #A4A4A4;
+}
+
+.paginator-btn_left {
+    left: 35px;
+    transform: rotate(135deg);
+}
+
+.paginator-btn_right {
+    right: 35px;
+    transform: rotate(-45deg);
 }

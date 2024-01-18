@@ -24,6 +24,14 @@
                     <img src="{{ ref.image_card.url }}" alt="{{ ref.title }}">
                 </div>
             {% endfor %}
+
+            {% if references.has_previous %}
+                <a href="?page={{ references.previous_page_number }}" class="paginator-btn paginator-btn_left"></a>
+            {% endif %}
+
+            {% if references.has_next %}
+                <a href="?page={{ references.next_page_number }}" class="paginator-btn paginator-btn_right"></a>
+            {% endif %}
         </div>
     </div>
 {% endblock main %}

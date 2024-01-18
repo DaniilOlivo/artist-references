@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.conf import settings
+from django.core.paginator import Paginator
 
 class IndexView(LoginRequiredMixin, TemplateView):
     extra_context = {"active_section": "index", "part": "main"}
@@ -18,12 +19,15 @@ def reference_list(request: HttpRequest):
             tags = request.user.tags.all()
             tags = tags.filter(name__icontains=keyword)
             list_objects = list_objects.filter(title__icontains=keyword) | list_objects.filter(tags__in=tags)
-            print(list_objects)
 
+    paginator = Paginator(list_objects, 6)
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
 
     context = {
         "active_section": "references",
         "part": "main",
-        "references": list_objects,
+        "references": page_obj,
     }
     return render(request,'references/list_refs.html', context=context)
