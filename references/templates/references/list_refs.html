@@ -10,11 +10,20 @@
 {% block main %}
     <div class="list-page">
         <div class="top-panel-page">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="search" id="field-search" placeholder="Search">
+            </form>
 
+            <button class="btn-main">Add Reference</button>
         </div>
 
         <div class="container-references">
-
+            {% for ref in references %}
+                <div class="reference">
+                    <img src="{{ ref.image_card.url }}" alt="{{ ref.title }}">
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock main %}

@@ -1,8 +1,8 @@
 from django.urls import path
-from references.views import IndexView, ReferenceView
+from references.views import IndexView, reference_list
 
 urlpatterns = [
-    path("list/", ReferenceView.as_view(), name="references"),
+    path("list/", reference_list, name="references"),
     path("", IndexView.as_view(), name="index"),
 ]
 
