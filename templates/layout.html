@@ -27,5 +27,15 @@
     <img src="{% static "img/blot_1.png" %}" class="blot blot_top">
     <img src="{% static "img/blot_2.png" %}" class="blot blot_bottom">
 
+    {% if user.is_authenticated %}
+        <div class="auth-block">
+                Welcome, {{ user.get_username }}
+                <form action="{% url "logout" %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Logout" class="auth-block__logout">
+                </form>
+        </div>
+    {% endif %}
+
     <script src="{% static "js/layout.js" %}"></script>
 {% endblock content %}
