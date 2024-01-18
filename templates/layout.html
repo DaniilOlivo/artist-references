@@ -32,8 +32,12 @@
                 Welcome, {{ user.get_username }}
                 <form action="{% url "logout" %}" method="post">
                     {% csrf_token %}
-                    <input type="submit" value="Logout" class="auth-block__logout">
+                    <input type="submit" value="Logout" class="auth-block__btn auth-block__logout">
                 </form>
+
+                {% if user.is_superuser %}
+                    <a href="/admin/" class="auth-block__btn">Admin panel</a>
+                {% endif %}
         </div>
     {% endif %}
 

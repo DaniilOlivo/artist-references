@@ -67,23 +67,28 @@ main {
 }
 
 .auth-block {
-    font-size: 20px;
+    font-size: 18px;
     position: fixed;
     top: 0;
     right: 0;
     padding: 2em 3em;
     display: flex;
     gap: 2em;
+    align-items: center;
+}
+
+.auth-block__btn {
+    color: #C70176;
+    font-size: 16px;
+    font-family: "Main";
+}
+
+.auth-block__btn:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .auth-block__logout {
     border: none;
-    font-size: 20px;
     background-color: transparent;
-    color: #C70176;
-}
-
-.auth-block__logout:hover {
-    cursor: pointer;
-    text-decoration: underline;
 }
