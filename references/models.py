@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFit
 import json
 
 priority_map = None
@@ -31,6 +33,10 @@ class Reference (models.Model):
     image = models.ImageField(upload_to=get_image_path)
     tags = models.ManyToManyField(Tag, related_name='references')
     status = models.CharField(max_length=100, choices=Statuses.choices, default=Statuses.new)
+
+    image_card = ImageSpecField(source='image',
+                                    processors=[ResizeToFit(200, 200, mat_color="#D9D9D9")],
+                                    format="JPEG")
 
     def __str__(self):
         return self.title
