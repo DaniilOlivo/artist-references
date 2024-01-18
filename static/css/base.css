@@ -27,6 +27,21 @@ body {
     font-size: 18px;
 }
 
+input[type="text"] {
+    border: none;
+    height: 55px;
+    padding: 10px 50px;
+    border-radius: 12px;
+    background: #FFF;
+    box-shadow: 0px 0px 5.2px 0px rgba(0, 0, 0, 0.70) inset;
+    font-family: "Main";
+    font-size: 18px;
+}
+
+input:focus {
+    border-color: #C70176;
+}
+
 .segment {
     flex-grow: 1;
     padding: 30px 50px;
