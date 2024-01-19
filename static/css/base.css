@@ -27,7 +27,7 @@ body {
     font-size: 18px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
     border: none;
     height: 55px;
     padding: 10px 50px;
