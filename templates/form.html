@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="form-page">
+        <h2 class="form-page__title">
+            {% block title_form %}{% endblock title_form %}
+        </h2>
+
+        <form method="post" class="form-page__form">
+            {% csrf_token %}
+            {{ form }}
+
+            <input
+                type="submit"
+                value="{% block submit %}{% endblock submit %}"
+                class="btn-main form-page__submit">
+        </form>
+    </div>
+{% endblock main %}

@@ -1,16 +1,7 @@
-{% extends "layout.html" %}
+{% extends "form.html" %}
 
 {% block title %}Artist References. Login{% endblock title %}
 
-{% block main %}
-    <div class="form-page">
-        <h2 class="form-page__title">Login</h2>
+{% block title_form %}Login{% endblock title_form %}
 
-        <form method="post" class="form-page__form">
-            {% csrf_token %}
-            {{ form }}
-
-            <input type="submit" value="Login" class="btn-main form-page__submit">
-        </form>
-    </div>
-{% endblock main %}
+{% block submit %}Login{% endblock submit %}
