@@ -14,6 +14,7 @@
 .blot_bottom  {
     bottom: 0;
     right: 0;
+    width: 450px;
 }
 
 header {
