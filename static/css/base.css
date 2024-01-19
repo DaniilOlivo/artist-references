@@ -42,6 +42,12 @@ input:focus {
     border-color: #C70176;
 }
 
+option {
+    font-family: "Main";
+    font-size: 18px;
+    padding: 5px 20px;
+}
+
 .segment {
     flex-grow: 1;
     padding: 30px 50px;

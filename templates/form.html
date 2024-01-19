@@ -6,7 +6,7 @@
             {% block title_form %}{% endblock title_form %}
         </h2>
 
-        <form method="post" class="form-page__form">
+        <form method="post" class="form-page__form" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
 

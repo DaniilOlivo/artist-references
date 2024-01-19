@@ -1,9 +1,10 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.conf import settings
 from django.core.paginator import Paginator
+from references.models import Reference
 
 class IndexView(LoginRequiredMixin, TemplateView):
     extra_context = {"active_section": "index", "part": "main"}
@@ -31,3 +32,16 @@ def reference_list(request: HttpRequest):
         "references": page_obj,
     }
     return render(request,'references/list_refs.html', context=context)
+
+class CreateReferenceView(LoginRequiredMixin, CreateView):
+    model = Reference
+    template_name = "references/create_reference.html"
+    fields = ["title", "image", "tags"]
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect('references')  
+        return super().post(request, *args, **kwargs)
