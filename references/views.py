@@ -1,10 +1,11 @@
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.conf import settings
 from django.core.paginator import Paginator
 from references.models import Reference
+from django.urls import reverse
 
 class IndexView(LoginRequiredMixin, TemplateView):
     extra_context = {"active_section": "index", "part": "main"}
@@ -45,3 +46,11 @@ class CreateReferenceView(LoginRequiredMixin, CreateView):
             form.save()
             return redirect('references')  
         return super().post(request, *args, **kwargs)
+
+class UpdateReferenceView(UpdateView):
+    model = Reference
+    template_name = "references/edit_reference.html"
+    fields = ["title", "tags"]
+    
+    def get_success_url(self):
+        return reverse("references")
