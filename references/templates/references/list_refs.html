@@ -22,6 +22,14 @@
             {% for ref in references %}
                 <div class="reference">
                     <img src="{{ ref.image_card.url }}" alt="{{ ref.title }}">
+
+                    <a href="" class="icon icon_edit">
+                        <img src="{% static "img/edit.png" %}" alt="edit">
+                    </a>
+
+                    <a href="" class="icon icon_delete">
+                        <img src="{% static "img/delete.png" %}" alt="delete">
+                    </a>
                 </div>
             {% endfor %}
 

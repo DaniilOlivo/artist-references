@@ -35,7 +35,7 @@ class Reference (models.Model):
     status = models.CharField(max_length=100, choices=Statuses.choices, default=Statuses.new)
 
     image_card = ImageSpecField(source='image',
-                                    processors=[ResizeToFit(170, 170, mat_color="white")],
+                                    processors=[ResizeToFit(170, 170)],
                                     format="JPEG")
 
     def __str__(self):
