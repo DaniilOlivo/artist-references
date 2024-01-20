@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Artist References. Delete reference{% endblock title %}
+
+{% block main %}
+    <div class="form-page">
+        <h2 class="form-page__title">
+            Delete reference?
+        </h2>
+
+        <form method="post" class="form-page__form">
+            {% csrf_token %}
+            <div class="form__panel">
+                <a href="{% url "references" %}" class="btn-main">Cancel</a>
+                <input
+                    type="submit"
+                    value="Delete"
+                    class="btn-main form-page__submit">
+            </div>
+        </form>
+    </div>
+{% endblock main %}

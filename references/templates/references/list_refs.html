@@ -27,7 +27,7 @@
                         <img src="{% static "img/edit.png" %}" alt="edit">
                     </a>
 
-                    <a href="" class="icon icon_delete">
+                    <a href="{% url "delete_reference" ref.id %}" class="icon icon_delete">
                         <img src="{% static "img/delete.png" %}" alt="delete">
                     </a>
                 </div>

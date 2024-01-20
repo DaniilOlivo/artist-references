@@ -34,3 +34,8 @@
     align-self: center;
     margin-top: 1em;
 }
+
+.form__panel {
+    display: flex;
+    gap: 1em;
+}

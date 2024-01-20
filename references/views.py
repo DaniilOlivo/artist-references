@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, UpdateView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
@@ -52,5 +52,12 @@ class UpdateReferenceView(UpdateView):
     template_name = "references/edit_reference.html"
     fields = ["title", "tags"]
     
+    def get_success_url(self):
+        return reverse("references")
+    
+class DeleteReferenceView(DeleteView):
+    model = Reference
+    template_name = "references/delete_reference.html"
+
     def get_success_url(self):
         return reverse("references")
