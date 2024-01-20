@@ -5,17 +5,19 @@
 {% block main %}
     <div class="form-page">
         <h2 class="form-page__title">
-            Delete reference?
+            Delete reference {{ object }}?
         </h2>
+
+        <img src="{{ object.image_card.url }}" alt="{{ object }}">
 
         <form method="post" class="form-page__form">
             {% csrf_token %}
             <div class="form__panel">
-                <a href="{% url "references" %}" class="btn-main">Cancel</a>
+                <a href="{% url "references" %}" class="btn-main btn-main_a">Cancel</a>
                 <input
                     type="submit"
                     value="Delete"
-                    class="btn-main form-page__submit">
+                    class="btn-main">
             </div>
         </form>
     </div>

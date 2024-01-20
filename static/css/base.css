@@ -84,6 +84,12 @@ option {
     transition: 200ms;
 }
 
+.btn-main_a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn-main:hover {
    transform: scale(1.1, 1.1);
    color: white;
