@@ -58,12 +58,17 @@
     padding: 5px 12px;
 }
 
+.current-page {
+    border-color: #C70176;
+}
+
 .paginator-btn {
     transition: 200ms;
     cursor: pointer;
 }
 
 .paginator-btn:hover {
+    background-color: #C70176;
     border-color: #C70176;
-    color: #C70176;
+    color: white;
 }
