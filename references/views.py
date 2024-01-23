@@ -1,10 +1,10 @@
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
 from django.conf import settings
 from django.core.paginator import Paginator
-from references.models import Reference
+from references.models import Reference, Tag
 from django.urls import reverse
 
 class IndexView(LoginRequiredMixin, TemplateView):
@@ -47,7 +47,7 @@ class CreateReferenceView(LoginRequiredMixin, CreateView):
             return redirect('references')  
         return super().post(request, *args, **kwargs)
 
-class UpdateReferenceView(UpdateView):
+class UpdateReferenceView(LoginRequiredMixin, UpdateView):
     model = Reference
     template_name = "references/edit_reference.html"
     fields = ["title", "tags"]
@@ -55,9 +55,19 @@ class UpdateReferenceView(UpdateView):
     def get_success_url(self):
         return reverse("references")
     
-class DeleteReferenceView(DeleteView):
+class DeleteReferenceView(LoginRequiredMixin, DeleteView):
     model = Reference
     template_name = "references/delete_reference.html"
 
     def get_success_url(self):
         return reverse("references")
+
+class ListTagsView(LoginRequiredMixin, ListView):
+    extra_context = {"active_section": "tags", "part": "main"}
+    model = Tag
+    context_object_name = "tags"
+    template_name = "references/list_tags.html"
+    paginate_by = 6
+
+    def get_queryset(self):
+        return self.request.user.tags.all()

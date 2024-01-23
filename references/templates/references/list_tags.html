@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "references/css/list_tags.css" %}">
+{% endblock style %}
+
+{% block title %}Artist References. List tags{% endblock title %}
+
+{% block main %}
+    <div class="list-page">
+        <div class="top-panel-page">
+            <a href="" class="btn-main btn-main_a">Add Tag</a>
+        </div>
+
+        <div class="container-tags">
+            {% for tag in page_obj %}
+                <div class="tag">
+                    <h3 class="tag__title">{{ tag.name }}</h3>
+
+                    <div class="tag__control">
+                        <a href="" class="icon icon_edit">
+                            <img src="{% static "img/edit.png" %}" alt="edit">
+                        </a>
+    
+                        <a href="" class="icon icon_delete">
+                            <img src="{% static "img/delete.png" %}" alt="delete">
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="paginator">
+            {% if references.has_previous %}
+                <a href="?page={{ references.previous_page_number }}" class="paginator-el paginator-btn paginator-btn_left">
+                    {{ page_obj.previous_page_number }}
+                </a>
+            {% endif %}
+
+            <span class="current-page paginator-el">
+                {{ page_obj.number }}
+            </span>
+
+            {% if references.has_next %}
+                <a href="?page={{ references.next_page_number }}" class="paginator-el paginator-btn paginator-btn_right">
+                    {{ page_obj.next_page_number }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock main %}
+
