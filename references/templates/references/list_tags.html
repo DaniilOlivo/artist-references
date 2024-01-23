@@ -10,7 +10,7 @@
 {% block main %}
     <div class="list-page">
         <div class="top-panel-page">
-            <a href="" class="btn-main btn-main_a">Add Tag</a>
+            <a href="{% url "create_tag" %}" class="btn-main btn-main_a">Add Tag</a>
         </div>
 
         <div class="container-tags">
@@ -32,8 +32,8 @@
         </div>
 
         <div class="paginator">
-            {% if references.has_previous %}
-                <a href="?page={{ references.previous_page_number }}" class="paginator-el paginator-btn paginator-btn_left">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="paginator-el paginator-btn paginator-btn_left">
                     {{ page_obj.previous_page_number }}
                 </a>
             {% endif %}
@@ -42,8 +42,8 @@
                 {{ page_obj.number }}
             </span>
 
-            {% if references.has_next %}
-                <a href="?page={{ references.next_page_number }}" class="paginator-el paginator-btn paginator-btn_right">
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="paginator-el paginator-btn paginator-btn_right">
                     {{ page_obj.next_page_number }}
                 </a>
             {% endif %}

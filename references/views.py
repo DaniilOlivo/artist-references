@@ -71,3 +71,16 @@ class ListTagsView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return self.request.user.tags.all()
+
+class CreateTagView(LoginRequiredMixin, CreateView):
+    model = Tag
+    template_name = "references/create_tag.html"
+    fields = ["name"]
+
+    def post(self, request: HttpRequest, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+            return redirect('tags')  
+        return super().post(request, *args, **kwargs)

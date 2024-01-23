@@ -7,6 +7,7 @@ urlpatterns = [
     path("references/delete/<int:pk>/", DeleteReferenceView.as_view(), name="delete_reference"),
     path("references/list/", reference_list, name="references"),
     path("tags/list", ListTagsView.as_view(), name="tags"),
+    path("tags/create/", CreateTagView.as_view(), name="create_tag"),
     path("", IndexView.as_view(), name="index"),
 ]
 
