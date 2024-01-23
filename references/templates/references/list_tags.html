@@ -19,7 +19,7 @@
                     <h3 class="tag__title">{{ tag.name }}</h3>
 
                     <div class="tag__control">
-                        <a href="" class="icon icon_edit">
+                        <a href="{% url "edit_tag" tag.id %}" class="icon icon_edit">
                             <img src="{% static "img/edit.png" %}" alt="edit">
                         </a>
     

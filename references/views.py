@@ -84,3 +84,11 @@ class CreateTagView(LoginRequiredMixin, CreateView):
             form.save()
             return redirect('tags')  
         return super().post(request, *args, **kwargs)
+    
+class UpdateTagView(LoginRequiredMixin, UpdateView):
+    model = Tag
+    template_name = "references/edit_tag.html"
+    fields = ["name"]
+
+    def get_success_url(self):
+        return reverse("tags")
