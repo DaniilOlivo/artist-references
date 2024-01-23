@@ -41,3 +41,7 @@
     align-items: center;
     margin-top: 1em;
 }
+
+.form-page__selection {
+    color: #C70176;
+}

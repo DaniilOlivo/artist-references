@@ -92,3 +92,10 @@ class UpdateTagView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse("tags")
+
+class DeleteTagView(LoginRequiredMixin, DeleteView):
+    model = Tag
+    template_name = "references/delete_tag.html"
+    
+    def get_success_url(self):
+        return reverse("tags")

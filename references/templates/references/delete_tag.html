@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Artist References. Delete tag{% endblock title %}
+
+{% block main %}
+    <div class="form-page">
+        <h2 class="form-page__title">
+            Delete tag <span class="form-page__selection">{{ object }}</span>?
+        </h2>
+
+        <form method="post" class="form-page__form">
+            {% csrf_token %}
+            <div class="form__panel">
+                <a href="{% url "tags" %}" class="btn-main btn-main_a">Cancel</a>
+                <input
+                    type="submit"
+                    value="Delete"
+                    class="btn-main">
+            </div>
+        </form>
+    </div>
+{% endblock main %}
