@@ -1,13 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFit
-import json
+from references.core import get_priority_map
 
-priority_map = None
-with open(settings.BASE_DIR / "references" / "config" / "priority_map.json") as f:
-    priority_map = json.load(f)
+priority_map = get_priority_map()
 
 def get_titles_statuses():
     statusesArr = priority_map["priority"].keys()

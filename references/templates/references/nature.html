@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static "references/nature.css" %}">
+{% endblock style %}
+
+{% block title %}Artist References. Nature{% endblock title %}
+
+{% block content %}
+    <img src="{{ reference.image.url }}" alt="{{ reference.title }}">
+{% endblock content %}

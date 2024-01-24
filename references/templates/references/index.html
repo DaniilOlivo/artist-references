@@ -8,7 +8,8 @@
 {% block title %}Artist References. Home{% endblock title %}
 
 {% block main %}
-    <div class="index-page">
+    <form class="index-page" method="POST">
+        {% csrf_token %}
         <section class="segment segment_gradient">
             <h3 class="title-segment">Settings</h3>
 
@@ -36,7 +37,7 @@
         </section>
 
         <section class="segment segment_center">
-            <button class="btn-main">Draw</button>
+            <input type="submit" value="Draw" class="btn-main">
         </section>
-    </div>
+    </form>
 {% endblock main %}

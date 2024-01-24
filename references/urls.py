@@ -10,6 +10,7 @@ urlpatterns = [
     path("tags/create/", CreateTagView.as_view(), name="create_tag"),
     path("tags/edit/<int:pk>/", UpdateTagView.as_view(), name="edit_tag"),
     path("tags/delete/<int:pk>/", DeleteTagView.as_view(), name="delete_tag"),
-    path("", IndexView.as_view(), name="index"),
+    path("nature/<int:pk>/", NatureView.as_view(), name="nature"),
+    path("", index_view, name="index"),
 ]
 
