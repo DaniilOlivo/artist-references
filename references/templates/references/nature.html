@@ -1,11 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
 {% block style %}
-    <link rel="stylesheet" href="{% static "references/nature.css" %}">
+    <link rel="stylesheet" href="{% static "references/css/nature.css" %}">
 {% endblock style %}
 
 {% block title %}Artist References. Nature{% endblock title %}
 
 {% block content %}
     <img src="{{ reference.image.url }}" alt="{{ reference.title }}">
+
+    <aside class="aside-panel">
+        <div class="aside-panel-btn">
+            <div class="aside-panel-btn__arrow"></div>
+        </div>
+
+        <div class="aside-panel-content">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Skip" class="btn-func btn-func_blue">
+            </form>
+
+             <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Dowland" class="btn-func btn-func_blue">
+            </form>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Failure" class="btn-func btn-func_red">
+            </form>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="With mistakes" class="btn-func btn-func_orange">
+            </form>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Success" class="btn-func btn-func_green">
+            </form>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Masterpiece" class="btn-func btn-func_violet">
+            </form>
+        </div>
+    </aside>
+
+    <script>
+        const btn = document.querySelector('.aside-panel-btn');
+        const aside = document.querySelector('.aside-panel-content');
+        const arrow = document.querySelector('.aside-panel-btn__arrow');
+        btn.addEventListener('click', () => {
+            arrow.classList.toggle('aside-panel-btn__arrow_reverse');
+            aside.classList.toggle('aside-panel-content_active');
+        })
+    </script>
 {% endblock content %}

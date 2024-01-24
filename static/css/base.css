@@ -94,3 +94,55 @@ option {
    transform: scale(1.1, 1.1);
    color: white;
 }
+
+.btn-func {
+    padding: 12px 40px;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 30px;
+    background-color: transparent;
+    transition: 200ms;
+    cursor: pointer;
+    font-family: "Title";
+    min-width: 200px;
+}
+
+.btn-func_blue {
+    border-color: rgb(74, 74, 255);
+}
+
+.btn-func_blue:hover {
+    background-color: rgb(74, 74, 255);
+}
+
+.btn-func_red {
+    border-color: rgb(255, 74, 74);
+}
+
+.btn-func_red:hover {
+    background-color: rgb(255, 74, 74);
+}
+
+.btn-func_green {
+    border-color: rgb(74, 255, 74);
+}
+
+.btn-func_green:hover {
+    background-color: rgb(74, 255, 74);
+}
+
+.btn-func_orange {
+    border-color: rgb(255, 255, 74);
+}
+
+.btn-func_orange:hover {
+    background-color: rgb(255, 255, 74);
+}
+
+.btn-func_violet {
+    border-color: rgb(255, 74, 255);
+}
+
+.btn-func_violet:hover {
+    background-color: rgb(255, 74, 255);
+}
