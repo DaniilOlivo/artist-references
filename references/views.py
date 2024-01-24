@@ -30,10 +30,6 @@ class NatureView(DetailView):
     template_name = "references/nature.html"
     context_object_name = "reference"
 
-class IndexView(LoginRequiredMixin, TemplateView):
-    extra_context = {"active_section": "index", "part": "main"}
-    template_name ='references/index.html'
-
 def reference_list(request: HttpRequest):
     if not request.user.is_authenticated:
         return redirect(settings.LOGIN_URL)
@@ -55,11 +51,11 @@ def reference_list(request: HttpRequest):
         "part": "main",
         "references": page_obj,
     }
-    return render(request,'references/list_refs.html', context=context)
+    return render(request,'references/ref/list_refs.html', context=context)
 
 class CreateReferenceView(LoginRequiredMixin, CreateView):
     model = Reference
-    template_name = "references/create_reference.html"
+    template_name = "references/ref/create_reference.html"
     fields = ["title", "image", "tags"]
 
     def post(self, request: HttpRequest, *args, **kwargs):
@@ -72,7 +68,7 @@ class CreateReferenceView(LoginRequiredMixin, CreateView):
 
 class UpdateReferenceView(LoginRequiredMixin, UpdateView):
     model = Reference
-    template_name = "references/edit_reference.html"
+    template_name = "references/ref/edit_reference.html"
     fields = ["title", "tags"]
     
     def get_success_url(self):
@@ -80,7 +76,7 @@ class UpdateReferenceView(LoginRequiredMixin, UpdateView):
     
 class DeleteReferenceView(LoginRequiredMixin, DeleteView):
     model = Reference
-    template_name = "references/delete_reference.html"
+    template_name = "references/ref/delete_reference.html"
 
     def get_success_url(self):
         return reverse("references")
@@ -89,7 +85,7 @@ class ListTagsView(LoginRequiredMixin, ListView):
     extra_context = {"active_section": "tags", "part": "main"}
     model = Tag
     context_object_name = "tags"
-    template_name = "references/list_tags.html"
+    template_name = "references/tags/list_tags.html"
     paginate_by = 6
 
     def get_queryset(self):
@@ -97,7 +93,7 @@ class ListTagsView(LoginRequiredMixin, ListView):
 
 class CreateTagView(LoginRequiredMixin, CreateView):
     model = Tag
-    template_name = "references/create_tag.html"
+    template_name = "references/tags/create_tag.html"
     fields = ["name"]
 
     def post(self, request: HttpRequest, *args, **kwargs):
@@ -110,7 +106,7 @@ class CreateTagView(LoginRequiredMixin, CreateView):
     
 class UpdateTagView(LoginRequiredMixin, UpdateView):
     model = Tag
-    template_name = "references/edit_tag.html"
+    template_name = "references/tags/edit_tag.html"
     fields = ["name"]
 
     def get_success_url(self):
@@ -118,7 +114,7 @@ class UpdateTagView(LoginRequiredMixin, UpdateView):
 
 class DeleteTagView(LoginRequiredMixin, DeleteView):
     model = Tag
-    template_name = "references/delete_tag.html"
+    template_name = "references/tags/delete_tag.html"
     
     def get_success_url(self):
         return reverse("tags")
