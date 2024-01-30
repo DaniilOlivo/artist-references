@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from django.conf import settings
 from django.core.paginator import Paginator
 from references.models import Reference, Tag
@@ -48,6 +48,14 @@ def update_weight_reference(request, status, pk):
     if request.method == "POST":
         ref_id = get_ref(request.user.references.all())
         return redirect(reverse("nature", kwargs={'pk': ref_id}))
+    
+def dowland(request, pk):
+    ref = Reference.objects.get(id=pk)
+    print(ref.image.name)
+    with ref.image.open("rb") as f:
+        res = HttpResponse(f.read(), content_type="image/jpeg")
+        res['Content-Disposition'] = 'attachment; filename="{}"'.format(ref.image.name)
+        return res
 
 def reference_list(request: HttpRequest):
     if not request.user.is_authenticated:
