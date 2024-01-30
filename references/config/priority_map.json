@@ -7,5 +7,12 @@
         "masterpiece": 0.0
     },
 
+    "tag_delta": {
+        "fail": 0.1,
+        "error": 0.0,
+        "success": -0.1,
+        "masterpiece": -0.2
+    },
+
     "base": 1.0
 }

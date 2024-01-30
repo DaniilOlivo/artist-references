@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from references.models import Reference, Tag
 from django.urls import reverse
-from references.core import get_ref
+from references.core import get_ref, get_priority_map
 
 def index_view(request: HttpRequest):
     if not request.user.is_authenticated:
@@ -29,6 +29,25 @@ class NatureView(DetailView):
     model = Reference
     template_name = "references/nature.html"
     context_object_name = "reference"
+
+def skip_reference(request):
+    if request.method == "POST":
+        ref_id = get_ref(request.user.references.all())
+        return redirect(reverse("nature", kwargs={'pk': ref_id}))
+
+def update_weight_reference(request, status, pk):
+    obj = Reference.objects.get(id=pk)
+    obj.status = status
+    obj.save()
+
+    deltas_map = get_priority_map()["tag_delta"]
+    for tag in obj.tags.all():
+        tag.priority += deltas_map[status]
+        tag.save()
+
+    if request.method == "POST":
+        ref_id = get_ref(request.user.references.all())
+        return redirect(reverse("nature", kwargs={'pk': ref_id}))
 
 def reference_list(request: HttpRequest):
     if not request.user.is_authenticated:

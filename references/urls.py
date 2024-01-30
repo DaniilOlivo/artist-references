@@ -11,6 +11,8 @@ urlpatterns = [
     path("tags/edit/<int:pk>/", UpdateTagView.as_view(), name="edit_tag"),
     path("tags/delete/<int:pk>/", DeleteTagView.as_view(), name="delete_tag"),
     path("nature/<int:pk>/", NatureView.as_view(), name="nature"),
+    path("skip/", skip_reference, name="skip"),
+    path("update/<str:status>/<int:pk>/", update_weight_reference, name="update_weight"),
     path("", index_view, name="index"),
 ]
 
