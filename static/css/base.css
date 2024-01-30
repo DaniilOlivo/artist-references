@@ -107,6 +107,11 @@ option {
     min-width: 200px;
 }
 
+.btn-func_a {
+    text-align: center;
+    font-size: 14px;
+}
+
 .btn-func_blue {
     border-color: rgb(74, 74, 255);
 }
