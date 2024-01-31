@@ -18,24 +18,45 @@ def index_view(request: HttpRequest):
 
     if request.method == "POST":
         mode = request.POST.get("mode", "standard")
-        ref_id = get_ref(request.user.references.all())
-        if ref_id:
-            return redirect(reverse("nature", kwargs={'pk': ref_id}))
+        return redirect(reverse("nature", kwargs={"mode": mode}))
 
+    return render(request,'references/index.html', context)
 
-    return render(request,'references/index.html', context=context)
+class NotFoundRefsView (TemplateView):
+    template_name = "references/warning.html"
+    extra_context = {
+        "part": "main",
+        "message": "There are no references in this category"
+    }
 
-class NatureView(DetailView):
-    model = Reference
-    template_name = "references/nature.html"
-    context_object_name = "reference"
+def nature(request, mode: str):
+    all_refs = request.user.references.all()
+    selection_refs = all_refs
+    if mode == "errors":
+        selection_refs = all_refs.filter(status="error") | all_refs.filter(status="fail")
+    elif mode == "improvement":
+        selection_refs = all_refs.filter(status="success")
+    elif mode == "news":
+        selection_refs = all_refs.filter(status="new")
+    
+    ref_id = get_ref(selection_refs)
 
-def skip_reference(request):
+    if not ref_id:
+        return redirect(reverse("not_refs"))
+
+    ref = Reference.objects.get(id=ref_id)
+    context = {
+        "reference": ref,
+        "mode": mode,
+    }
+
+    return render(request, "references/nature.html", context)
+
+def skip_reference(request: HttpRequest, mode: str):
     if request.method == "POST":
-        ref_id = get_ref(request.user.references.all())
-        return redirect(reverse("nature", kwargs={'pk': ref_id}))
+        return redirect(reverse("nature", kwargs={'mode': mode}))
 
-def update_weight_reference(request, status, pk):
+def update_weight_reference(request, mode, status, pk):
     obj = Reference.objects.get(id=pk)
     obj.status = status
     obj.save()
@@ -46,8 +67,7 @@ def update_weight_reference(request, status, pk):
         tag.save()
 
     if request.method == "POST":
-        ref_id = get_ref(request.user.references.all())
-        return redirect(reverse("nature", kwargs={'pk': ref_id}))
+        return redirect(reverse("nature", kwargs={'mode': mode}))
     
 def dowland(request, pk):
     ref = Reference.objects.get(id=pk)

@@ -10,10 +10,11 @@ urlpatterns = [
     path("tags/create/", CreateTagView.as_view(), name="create_tag"),
     path("tags/edit/<int:pk>/", UpdateTagView.as_view(), name="edit_tag"),
     path("tags/delete/<int:pk>/", DeleteTagView.as_view(), name="delete_tag"),
-    path("nature/<int:pk>/", NatureView.as_view(), name="nature"),
+    path("nature/<str:mode>/", nature, name="nature"),
     path("dowland/<int:pk>/", dowland, name="dowland"),
-    path("skip/", skip_reference, name="skip"),
-    path("update/<str:status>/<int:pk>/", update_weight_reference, name="update_weight"),
+    path("skip/<str:mode>/", skip_reference, name="skip"),
+    path("update/<str:mode>/<str:status>/<int:pk>/", update_weight_reference, name="update_weight"),
+    path("not_found_references/", NotFoundRefsView.as_view(), name="not_refs"),
     path("", index_view, name="index"),
 ]
 

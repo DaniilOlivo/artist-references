@@ -17,7 +17,7 @@
         <div class="aside-panel-content">
             <a href="{% url "index" %}" class="btn-func btn-func_a btn-func_blue">Stop</a>
 
-            <form action="{% url "skip" %}" method="post">
+            <form action="{% url "skip" mode %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Skip" class="btn-func btn-func_blue">
             </form>
@@ -27,22 +27,22 @@
                 <input type="submit" value="Dowland" class="btn-func btn-func_blue">
             </form>
 
-            <form action="{% url "update_weight" "fail" reference.id %}" method="post">
+            <form action="{% url "update_weight" mode "fail" reference.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Failure" class="btn-func btn-func_red">
             </form>
 
-            <form action="{% url "update_weight" "error" reference.id %}" method="post">
+            <form action="{% url "update_weight" mode "error" reference.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="With mistakes" class="btn-func btn-func_orange">
             </form>
 
-            <form action="{% url "update_weight" "success" reference.id %}" method="post">
+            <form action="{% url "update_weight" mode "success" reference.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Success" class="btn-func btn-func_green">
             </form>
 
-            <form action="{% url "update_weight" "masterpiece" reference.id %}" method="post">
+            <form action="{% url "update_weight" mode "masterpiece" reference.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Masterpiece" class="btn-func btn-func_violet">
             </form>

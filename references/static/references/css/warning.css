@@ -1,0 +1,10 @@
+.warning-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.warning-page__p {
+    font-size: 24px;
+}
