@@ -23,6 +23,8 @@
                 <div class="reference">
                     <img src="{{ ref.image_card.url }}" alt="{{ ref.title }}">
 
+                    <div class="marker-status marker-status_{{ ref.status }}"></div>
+                    
                     <a href="{% url "edit_reference" ref.id %}" class="icon icon_edit">
                         <img src="{% static "img/edit.png" %}" alt="edit">
                     </a>

@@ -54,6 +54,34 @@
     transform: rotate(-45deg);
 }
 
+.marker-status {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.marker-status_new {
+    background-color: royalblue;
+}
+
+.marker-status_fail {
+    background-color: orangered;
+}
+
+.marker-status_error {
+    background-color: orange;
+}
+
+.marker-status_success {
+    background-color: green;
+}
+
+.marker-status_masterpiece {
+    background-color: violet;
+}
+
 .icon {
     position: absolute;
     bottom: 0;
