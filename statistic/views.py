@@ -1,7 +1,8 @@
 from django.views.generic import TemplateView
-from statistic.models import StatisticsTotal, StatisticsTag
+from statistic.models import StatisticsTag
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
+from django.db.models import Count
 
 class StatisticsPage (LoginRequiredMixin, TemplateView):
     template_name = "statistic/statistics.html"
@@ -16,7 +17,13 @@ class StatisticsPage (LoginRequiredMixin, TemplateView):
         return context
     
 def statistics_tags_api(request):
-    tags_user = request.user.tags.all()
-    tags = StatisticsTag.objects.filter(tag__in=tags_user)
-    return JsonResponse(list(tags), safe=False)
+    tags = request.user.tags.all().annotate(ref_count=Count("references"))
 
+    data = {
+        "tags": list(tags.values()),
+        # "references": list(request.user.references.all().values()),
+        "statistics": list(StatisticsTag.objects.filter(tag__in=tags).values())
+    }
+
+    return JsonResponse(data)
+    

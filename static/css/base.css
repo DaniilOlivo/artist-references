@@ -72,6 +72,10 @@ option {
     font-size: 20px;
 }
 
+.title-segment_black {
+    color: black;
+}
+
 .btn-main {
     font-size: 20px;
     width: 280px;
