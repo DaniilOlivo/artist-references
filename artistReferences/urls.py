@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('references/', include('references.urls')),
+    path("statistics/", include('statistic.urls')),
     path('auth/', include('login.urls')),
     path('', RedirectView.as_view(url='/references/')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

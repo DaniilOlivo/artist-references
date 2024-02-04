@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static "statistic/css/index.css" %}">
+{% endblock style %}
+
+{% block title %}Artist Statistics. Statistics{% endblock title %}
+
+{% block main %}
+    <div class="index-page">
+        <section class="segment segment_gradient">
+            <h3 class="title-segment">Total statistics</h3>
+
+            <div class="statistics-total-block">
+                <div class="statistics-total-block__line">
+                    <span>Total attempts:</span>
+                    <span class="value">{{ total.attempts }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>Images:</span>
+                    <span class="value">{{ total.images }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>News:</span>
+                    <span class="value">{{ total.new }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>Fails:</span>
+                    <span class="value">{{ total.fail }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>Errors:</span>
+                    <span class="value">{{ total.error }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>Success:</span>
+                    <span class="value">{{ total.success }}</span>
+                </div>
+
+                <div class="statistics-total-block__line">
+                    <span>Masterpieces:</span>
+                    <span class="value">{{ total.masterpiece }}</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="segment segment_center">
+            <h3 class="title-segment">Tags</h3>
+
+            <canvas id="chart-tags"></canvas>
+        </section>
+    </div>    
+{% endblock main %}
+
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <script src="{% static "statistic/js/index.js" %}"></script>
+{% endblock script %}

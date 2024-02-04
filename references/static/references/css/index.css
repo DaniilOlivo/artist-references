@@ -1,9 +1,3 @@
-.index-page {
-    height: 100%;
-    display: flex;
-    gap: 50px;
-}
-
 .radio-block {
     display: flex;
     flex-direction: column;

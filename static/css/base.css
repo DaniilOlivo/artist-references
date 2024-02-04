@@ -59,6 +59,7 @@ option {
 
 .segment_center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -150,4 +151,14 @@ option {
 
 .btn-func_violet:hover {
     background-color: rgb(255, 74, 255);
+}
+
+.index-page {
+    height: 100%;
+    display: flex;
+    gap: 50px;
+}
+
+.value {
+    font-size: 20px;
 }
