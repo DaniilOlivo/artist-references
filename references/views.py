@@ -69,10 +69,18 @@ def update_weight_reference(request, mode, status, pk):
     obj.status = status
     obj.save()
 
+    statistics_user = request.user.statistics
+    statistics_user.attempts += 1
+    statistics_user.save()
+
     deltas_map = get_priority_map()["tag_delta"]
     for tag in obj.tags.all():
         tag.priority += deltas_map[status]
         tag.save()
+
+        statistics_tag = tag.statistics
+        statistics_tag.attempts += 1
+        statistics_tag.save()
 
     if request.method == "POST":
         return redirect(reverse("nature", kwargs={'mode': mode}))
