@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse

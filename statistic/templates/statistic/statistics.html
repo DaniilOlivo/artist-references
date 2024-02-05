@@ -13,40 +13,12 @@
             <h3 class="title-segment">Total statistics</h3>
 
             <div class="statistics-block statistics-block_total">
-                <div class="statistics-block__line">
-                    <span>Total attempts:</span>
-                    <span class="value">{{ total.attempts }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>Images:</span>
-                    <span class="value">{{ total.images }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>News:</span>
-                    <span class="value">{{ total.new }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>Fails:</span>
-                    <span class="value">{{ total.fail }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>Errors:</span>
-                    <span class="value">{{ total.error }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>Success:</span>
-                    <span class="value">{{ total.success }}</span>
-                </div>
-
-                <div class="statistics-block__line">
-                    <span>Masterpieces:</span>
-                    <span class="value">{{ total.masterpiece }}</span>
-                </div>
+                {% for stat in total.values %}
+                    <div class="statistics-block__line">
+                        <span>{{ stat.label }}</span>
+                        <span class="value">{{ stat.value }}</span>
+                    </div>
+                {% endfor %}
             </div>
         </section>
 
@@ -61,35 +33,12 @@
 
             {% for tag in tags %}
                 <div class="statistics-block statistics-block_tag" data-id="{{ tag.id }}">
-                    <div class="statistics-block__line">
-                        <span>Attempts:</span>
-                        <span class="value">{{ tag.attempts }}</span>
-                    </div>
-
-                    <div class="statistics-block__line">
-                        <span>News:</span>
-                        <span class="value">{{ tag.new }}</span>
-                    </div>
-
-                    <div class="statistics-block__line">
-                        <span>Fails:</span>
-                        <span class="value">{{ tag.fail }}</span>
-                    </div>
-
-                    <div class="statistics-block__line">
-                        <span>Errors:</span>
-                        <span class="value">{{ tag.error }}</span>
-                    </div>
-
-                    <div class="statistics-block__line">
-                        <span>Success:</span>
-                        <span class="value">{{ tag.success }}</span>
-                    </div>
-
-                    <div class="statistics-block__line">
-                        <span>Masterpieces:</span>
-                        <span class="value">{{ tag.masterpiece }}</span>
-                    </div>
+                    {% for stat in tag.values %}
+                        <div class="statistics-block__line">
+                            <span>{{ stat.label }}</span>
+                            <span class="value">{{ stat.value }}</span>
+                        </div>
+                    {% endfor %}
                 </div>
             {% endfor %}
         </section>

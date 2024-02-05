@@ -6,12 +6,6 @@ from django.dispatch import receiver
 
 class StatisticsBase (models.Model):
     attempts = models.IntegerField(default=0)
-    images = models.IntegerField(default=0)
-    new = models.IntegerField(default=0)
-    fail = models.IntegerField(default=0)
-    error = models.IntegerField(default=0)
-    success = models.IntegerField(default=0)
-    masterpiece = models.IntegerField(default=0)
 
     class Meta:
         abstract = True
