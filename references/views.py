@@ -14,10 +14,13 @@ def index_view(request: HttpRequest):
     context = {
         "active_section": "index",
         "part": "main",
+        "tags": request.user.tags.all()
     }
 
     if request.method == "POST":
         mode = request.POST.get("mode", "standard")
+        tags = list(map(int, request.POST.getlist("tags", [])))
+        request.session["selected_tags"] = tags
         return redirect(reverse("nature", kwargs={"mode": mode}))
 
     return render(request,'references/index.html', context)
@@ -30,7 +33,12 @@ class NotFoundRefsView (TemplateView):
     }
 
 def nature(request, mode: str):
-    all_refs = request.user.references.all()
+    tags = request.session.get("selected_tags", None)
+    if tags:
+        all_refs = request.user.references.filter(tags__in=tags)
+    else:
+        all_refs = request.user.references.all()
+
     selection_refs = all_refs
     if mode == "errors":
         selection_refs = all_refs.filter(status="error") | all_refs.filter(status="fail")

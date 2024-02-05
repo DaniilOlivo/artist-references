@@ -13,7 +13,7 @@
         <section class="segment segment_gradient">
             <h3 class="title-segment">Settings</h3>
 
-            <div class="radio-block">
+            <div class="form-index-block">
                 <label for="mode-1">
                     <input type="radio" name="mode" id="mode-1" value="standard" checked>
                     Standard
@@ -33,6 +33,15 @@
                     <input type="radio" name="mode" id="mode-4" value="news">
                     Only new ones
                 </label>
+
+                <div class="form-index-block__tags">
+                    <label for="tags">Included tags:</label>    
+                    <select name="tags" id="tags" multiple>
+                        {% for tag in tags %}
+                            <option value="{{ tag.id }}">{{ tag.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
         </section>
 
