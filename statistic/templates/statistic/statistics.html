@@ -12,38 +12,38 @@
         <section class="segment segment_gradient">
             <h3 class="title-segment">Total statistics</h3>
 
-            <div class="statistics-total-block">
-                <div class="statistics-total-block__line">
+            <div class="statistics-block statistics-block_total">
+                <div class="statistics-block__line">
                     <span>Total attempts:</span>
                     <span class="value">{{ total.attempts }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>Images:</span>
                     <span class="value">{{ total.images }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>News:</span>
                     <span class="value">{{ total.new }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>Fails:</span>
                     <span class="value">{{ total.fail }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>Errors:</span>
                     <span class="value">{{ total.error }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>Success:</span>
                     <span class="value">{{ total.success }}</span>
                 </div>
 
-                <div class="statistics-total-block__line">
+                <div class="statistics-block__line">
                     <span>Masterpieces:</span>
                     <span class="value">{{ total.masterpiece }}</span>
                 </div>
@@ -53,7 +53,45 @@
         <section class="segment segment_center">
             <h3 class="title-segment title-segment_black">Tags</h3>
 
-            <canvas id="chart-tags"></canvas>
+            <div class="container-canvas">
+                <canvas id="chart-tags"></canvas>
+            </div>
+
+            <h4 id="title-active-tag"></h4>
+
+            {% for tag in tags %}
+                <div class="statistics-block statistics-block_tag" data-id="{{ tag.id }}">
+                    <div class="statistics-block__line">
+                        <span>Attempts:</span>
+                        <span class="value">{{ tag.attempts }}</span>
+                    </div>
+
+                    <div class="statistics-block__line">
+                        <span>News:</span>
+                        <span class="value">{{ tag.new }}</span>
+                    </div>
+
+                    <div class="statistics-block__line">
+                        <span>Fails:</span>
+                        <span class="value">{{ tag.fail }}</span>
+                    </div>
+
+                    <div class="statistics-block__line">
+                        <span>Errors:</span>
+                        <span class="value">{{ tag.error }}</span>
+                    </div>
+
+                    <div class="statistics-block__line">
+                        <span>Success:</span>
+                        <span class="value">{{ tag.success }}</span>
+                    </div>
+
+                    <div class="statistics-block__line">
+                        <span>Masterpieces:</span>
+                        <span class="value">{{ tag.masterpiece }}</span>
+                    </div>
+                </div>
+            {% endfor %}
         </section>
     </div>    
 {% endblock main %}

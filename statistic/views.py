@@ -14,16 +14,12 @@ class StatisticsPage (LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["total"] = self.request.user.statistics
+        tags = self.request.user.tags.all()
+        context["tags"] = StatisticsTag.objects.filter(tag__in=tags)
         return context
     
 def statistics_tags_api(request):
     tags = request.user.tags.all().annotate(ref_count=Count("references"))
 
-    data = {
-        "tags": list(tags.values()),
-        # "references": list(request.user.references.all().values()),
-        "statistics": list(StatisticsTag.objects.filter(tag__in=tags).values())
-    }
-
-    return JsonResponse(data)
+    return JsonResponse(list(tags.values()), safe=False)
     
