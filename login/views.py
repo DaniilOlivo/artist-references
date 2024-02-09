@@ -16,4 +16,4 @@ class RegisterPageView(CreateView):
     form_class = UserCreationForm
 
     def get_success_url(self) -> str:
-        return reverse("auth:login")
+        return reverse("login")
